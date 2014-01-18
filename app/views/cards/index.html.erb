@@ -1,0 +1,14 @@
+<% @cards.each do |card| %>
+<div class="card-box">
+  <div class="wrapper">
+    <div class="front">
+      <div class="content"><%= render_word_content(card.word) %></div>
+    </div>
+
+    <div class="back">
+      <div class="content"><%= render_explanation_content(card.explanation) %></div>
+    </div>
+  </div>
+</div>
+
+<% end %>

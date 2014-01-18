@@ -1,5 +1,11 @@
 class CardsController < ApplicationController
 
+  def index
+    @cards = current_user.cards.recent_update.all
+
+  end
+
+
   def create
     @cards = current_user.cards.recent_update.all
 

@@ -1,3 +1,50 @@
 // Place all the styles related to the cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3/transition";
+
+
+.card-box {
+  width: 500px;
+  height: 200px;
+  max-height: 200px;
+  overflow: hidden;
+
+  margin: 20px;
+  border: 1px solid #111;
+
+  text-align: center;
+  cursor: pointer;
+
+  .content {
+    font-size: 30px;
+  }
+
+  .wrapper {
+    width: 1000px;
+    height: 200px;
+  }
+
+  .front {
+    float: left;
+    width: 500px;
+    height: 200px;
+    vertical-align: middle;
+    background-color: #fff;
+    @include transition(margin 0.3s);
+  }
+
+  .back {
+    float: left;
+    width: 500px;
+    height: 200px;
+    vertical-align: middle; 
+    background-color: #ccc;
+  }
+
+  &.flip {
+    .front {
+      margin-left: -500px;
+    }
+  }
+}
