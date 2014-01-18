@@ -19,7 +19,7 @@ class Word < ActiveRecord::Base
 
   scope :recent, -> {order("id desc")}
 
-  validates :word, :presence => true, :uniqueness => true
+  validates :content, :presence => true, :uniqueness => true
 
 
   aasm :column => :status do

@@ -2,7 +2,7 @@ class YahooDicCrawler
 
   def initialize(word)
     @word = word
-    @crawler = Crawler.new(@word.word)
+    @crawler = Crawler.new(@word.content)
   end
 
   def save_result_to_db(record)

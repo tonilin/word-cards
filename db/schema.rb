@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(version: 20140118115851) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "words", force: true do |t|
-    t.string   "word"
+    t.string   "content"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "words", ["word"], name: "index_words_on_word", unique: true, using: :btree
+  add_index "words", ["content"], name: "index_words_on_content", unique: true, using: :btree
 
 end

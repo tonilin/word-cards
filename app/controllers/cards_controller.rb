@@ -10,7 +10,7 @@ class CardsController < ApplicationController
   def create
     @cards = current_user.cards.recent_update.all
 
-    @word = Word.find_or_initialize_by_word(word_params[:word])
+    @word = Word.find_or_initialize_by_content(word_params[:content])
 
     if !@word.persisted?
       if @word.save
@@ -33,7 +33,7 @@ class CardsController < ApplicationController
 
   def word_params 
 
-    params.require(:word).permit(:word)
+    params.require(:word).permit(:content)
   end
 
 

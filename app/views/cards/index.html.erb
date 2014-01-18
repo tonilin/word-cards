@@ -1,6 +1,6 @@
 
 <%= simple_form_for @word, :url => cards_path do |f| %>
-  <%= f.input :word %>
+  <%= f.input :content %>
   <%= f.submit %>
 <% end %>
 
@@ -15,9 +15,9 @@
   <% @cards.each do |card| %>
   <tr>
     <td><%= card.id %></td>
-    <td><%= card.word.word %></td>
-    <td><%= card.explanation.pos %></td>
-    <td><%= card.explanation.content %></td>
+    <td><%= render_word_content(card.word) %></td>
+    <td><%= render_explanation_pos(card.explanation) %></td>
+    <td><%= render_explanation_content(card.explanation) %></td>
   </tr>
   <% end %>
 
