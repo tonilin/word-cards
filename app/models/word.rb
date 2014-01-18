@@ -11,7 +11,7 @@
 #
 
 class Word < ActiveRecord::Base
-
+  include AASM
 
   has_many :user_words, :dependent => :destroy
   has_many :users, :through => :user_words
@@ -19,5 +19,22 @@ class Word < ActiveRecord::Base
   scope :recent, -> {order("id desc")}
 
   validates :word, :uniqueness => true
+
+
+  aasm :column => :status do
+    state :pending, :initial => true
+    state :success
+    state :fail
+
+    event :success do
+      transitions :to => :success, :from => [:pending]
+    end
+    event :fail do
+      transitions :to => :fail, :from => [:pending]
+    end
+
+  end
+
+
 
 end
