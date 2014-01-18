@@ -29,7 +29,7 @@ class YahooDicCrawler::Crawler
   end
 
   def explanation
-    @result_doc.search(".explanation").first.text
+    @result_doc.search(".explanation").first.try(:text)
   end
 
   def explanations
@@ -38,12 +38,12 @@ class YahooDicCrawler::Crawler
     explanation_pos_wrappers = @result_doc.search(".explanation_pos_wrapper")
 
     explanation_pos_wrappers.each do |explanation_pos_wrapper|
-      pos = explanation_pos_wrapper.search(".pos_abbr").first.text
+      pos = explanation_pos_wrapper.search(".pos_abbr").first.try(:text)
 
       explanation_pos_wrapper.search(".explanation").each do |explanation_row|
         result << {
           pos: pos,
-          content: explanation_row.text
+          content: explanation_row.try(:text)
         }
       end
 

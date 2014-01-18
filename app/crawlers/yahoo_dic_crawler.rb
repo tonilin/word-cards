@@ -6,10 +6,11 @@ class YahooDicCrawler
   end
 
   def save_result_to_db(record)
-    @word.success!
+    record.success!
 
     @crawler.explanations.each do |explanation|
-      @word.explanations.create({
+
+      record.explanations.create({
         pos: explanation[:pos],
         content: explanation[:content]
       })
@@ -18,9 +19,9 @@ class YahooDicCrawler
   end
 
   def currecting_word
-    currect_word = Word.find_or_initialize_by_content(@crawler.word)
+    currect_word = Word.find_or_create_by_content(@crawler.word)
 
-    if !currect_word.persisted?
+    if currect_word.pending?
       save_result_to_db(currect_word)
     end
 
