@@ -27,20 +27,20 @@ class User < ActiveRecord::Base
 
 
   def add_card!(word, explanation)
-    if !added_card?(word, explanation)
+    if !added_card?(word)
       card = cards.build
       card.word = word
       card.explanation = explanation
       card.save
     else
-      cards.find_by_word_id_and_explanation_id(word.id, explanation.id).touch
+      cards.find_by_word_id(word.id).touch
     end
   end
 
-  def added_card?(word, explanation)
-    return false if word.nil? || explanation.nil?
+  def added_card?(word)
+    return false if word.nil?
 
-    cards.find_by_word_id_and_explanation_id(word.id, explanation.id).present?
+    cards.find_by_word_id(word.id).present?
   end
 
 
