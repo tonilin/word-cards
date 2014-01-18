@@ -2,18 +2,28 @@ class WordsController < ApplicationController
 
   def index
     @word = Word.new
+
+    @words = current_user.words.recent.all
   end
 
   def create
-    group = current_user.words.build(word_params)
+    @words = current_user.words.recent.all
 
-    if current_user.save
-      redirect_to words_path
-    else
-      render :index
+    @word = Word.find_or_initialize_by_word(word_params[:word])
+
+    if !@word.persisted?
+      if !@word.save
+        return render :index
+      end
     end
 
+    current_user.add_word!(@word)
 
+    if @word.pending?
+      YahooDicCrawler.new(@word).run
+    end
+    
+    redirect_to words_path
   end
 
 
