@@ -4,5 +4,19 @@
   <%= f.submit %>
 <% end %>
 
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Word</th>
+    <th>Explanation</th>
+  </td>
 
+  <% @words.each do |word| %>
+  <tr>
+    <td><%= word.id %></td>
+    <td><%= word.word %></td>
+    <td><%= word.explanation %></td>
+  </tr>
+  <% end %>
 
+</table>
