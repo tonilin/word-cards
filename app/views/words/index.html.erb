@@ -12,12 +12,12 @@
     <th>Explanation</th>
   </td>
 
-  <% @words.each do |word| %>
+  <% @cards.each do |card| %>
   <tr>
-    <td><%= word.id %></td>
-    <td><%= word.word %></td>
-    <td><%= word.pos %></td>
-    <td><%= word.explanation %></td>
+    <td><%= card.id %></td>
+    <td><%= card.word.word %></td>
+    <td><%= card.explanation.pos %></td>
+    <td><%= card.explanation.content %></td>
   </tr>
   <% end %>
 

@@ -6,10 +6,7 @@ class YahooDicCrawler
   end
 
   def save_result_to_db(record)
-    @word.explanation = @crawler.explanation
-    @word.pos = @crawler.pos
-    @word.status = "success"
-    @word.save
+    @word.success!
 
     @crawler.explanations.each do |explanation|
       @word.explanations.create({
@@ -22,8 +19,8 @@ class YahooDicCrawler
 
   end
 
-  def currenting_word
-    currect_word = Word.find_or_initialize_by_word(@word.word)
+  def currecting_word
+    currect_word = Word.find_or_initialize_by_word(@crawler.word)
 
     if !currect_word.persisted?
       save_result_to_db(currect_word)
@@ -42,13 +39,19 @@ class YahooDicCrawler
 
     if @crawler.exactly_hit?
       save_result_to_db(@word)
+
+      @word.cards.each do |card|
+        card.explanation = @word.explanations.first if card.explanation.nil?
+        card.save
+      end
+
       return
     end
 
-    current_word = currenting_word
+    currect_word = currecting_word
 
-    @word.users.each do |user|
-      user.words << current_word
+    @word.cards.each do |card|
+      card.user.add_card!(currect_word, currect_word.explanations.first)
     end
 
     @word.destroy

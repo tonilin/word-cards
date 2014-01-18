@@ -26,12 +26,19 @@ class User < ActiveRecord::Base
   has_many :cards
 
 
-  def add_word!(word)
-    words << word if !added_word?(word)
+  def add_card!(word, explanation)
+    if !added_card?(word, explanation)
+      card = cards.build
+      card.word = word
+      card.explanation = explanation
+      card.save
+    end
   end
 
-  def added_word?(word)
-    words.find_by_word(word.word).present?
+  def added_card?(word, explanation)
+    return false if word.nil? || explanation.nil?
+
+    cards.find_by_word_id_and_explanation_id(word.id, explanation.id).present?
   end
 
 
