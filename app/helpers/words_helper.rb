@@ -1,7 +1,9 @@
 module WordsHelper
 
   def render_word_content(word) 
-    word.content if word
+    if word
+      capitalize_first_char(word.content)
+    end
   end
 
 end

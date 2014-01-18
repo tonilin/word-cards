@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3/transition";
-
+@import "compass/css3/border-radius";
 
 .card-box {
   width: 500px;
@@ -15,9 +15,10 @@
 
   text-align: center;
   cursor: pointer;
+  @include border-radius(5px);
 
   .content {
-    font-size: 30px;
+    font-size: 40px;
     display:table-cell; vertical-align:middle; 
   }
 
