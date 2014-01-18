@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117100700) do
+ActiveRecord::Schema.define(version: 20140118075317) do
 
   create_table "user_words", force: true do |t|
     t.integer  "user_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140117100700) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "pos"
   end
 
   add_index "words", ["word"], name: "index_words_on_word", unique: true, using: :btree
