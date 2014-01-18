@@ -28,9 +28,12 @@ class CardsController < ApplicationController
   end
 
   def destroy
+    @card = current_user.cards.find(params[:id])
 
+    @card.destroy
+
+    redirect_to :back
   end
-
 
   private
 
