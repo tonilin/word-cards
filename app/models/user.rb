@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
       card.word = word
       card.explanation = explanation
       card.save
+    else
+      cards.find_by_word_id_and_explanation_id(word.id, explanation.id).touch
     end
   end
 
