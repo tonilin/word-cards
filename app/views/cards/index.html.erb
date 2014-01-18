@@ -10,6 +10,7 @@
     <th>Word</th>
     <th>Pos</th>
     <th>Explanation</th>
+    <th>Action</th>
   </td>
 
   <% @cards.each do |card| %>
@@ -18,6 +19,10 @@
     <td><%= render_word_content(card.word) %></td>
     <td><%= render_explanation_pos(card.explanation) %></td>
     <td><%= render_explanation_content(card.explanation) %></td>
+    <td>
+      <%= render_card_destroy_btn(card) %>
+
+    </td>
   </tr>
   <% end %>
 

@@ -27,6 +27,9 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
+  def destroy
+
+  end
 
 
   private
