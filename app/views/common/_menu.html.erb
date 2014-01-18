@@ -1,33 +1,26 @@
-<div class="navbar navbar-fixed-top ">
-      <div class="navbar-inner top ">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-
-          <%= link_to(Setting.app_name, Setting.domain , :class => "brand" )%>
-
-          <%#= render :partial => "common/search_form" %>
-
-   
-     
-          <div class="nav-collapse">
-      
-              <ul class="nav">
-                <li><%= link_to("Cards", cards_path) %></li>
-                <li><%= link_to("Link-2","#") %></li>
-                <li><%= link_to("Link-2","#") %></li>
-              </ul>
-              
-              
-              <%= render :partial => "common/user_nav"%>
-
-          </div>
-    </div>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">Word Cards</a>
   </div>
 
-  <%= yield :submenu %>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li class="<%= active_link_to_class(cards_path, :active => :inclusive) %>">
+        <%= link_to("Cards", cards_path) %>
+      </li>
+    </ul>
 
-</div>
+
+    <%= render :partial => "common/user_nav" %>
+  </div>
+
+
+
+</nav>

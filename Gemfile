@@ -32,7 +32,7 @@ gem "carrierwave-meta"
 
 gem "settingslogic"
 
-gem "anjlab-bootstrap-rails", "2.3.1.2", :require => "bootstrap-rails"
+gem 'anjlab-bootstrap-rails', '~> 3.0.3.0', :require => 'bootstrap-rails'
 gem "simple_form", "~> 3.0.1"
 gem "will_paginate", "3.0.3"
 
@@ -52,6 +52,7 @@ gem "mechanize"
 gem "hipchat"
 
 gem "button_link_to"
+gem "active_link_to"
 
 # Cache
 gem "dalli"

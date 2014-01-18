@@ -1,6 +1,7 @@
-body{
-  padding-top: 60px;
+body {
+  padding-top: 70px;
 }
+
 
 ul.nav li.dropdown:hover .dropdown-menu{
     display: block;    
@@ -8,4 +9,8 @@ ul.nav li.dropdown:hover .dropdown-menu{
 
 .navbar .dropdown-menu {
  margin-top: 0px;
+}
+
+.alert {
+  margin-bottom: 0px;
 }
