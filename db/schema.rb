@@ -21,13 +21,6 @@ ActiveRecord::Schema.define(version: 20140118075927) do
     t.datetime "updated_at"
   end
 
-  create_table "user_words", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "word_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -48,11 +41,9 @@ ActiveRecord::Schema.define(version: 20140118075927) do
 
   create_table "words", force: true do |t|
     t.string   "word"
-    t.string   "explanation"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "pos"
   end
 
   add_index "words", ["word"], name: "index_words_on_word", unique: true, using: :btree

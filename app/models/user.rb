@@ -24,9 +24,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  has_many :user_words
-  has_many :words, :through => :user_words
-
   def add_word!(word)
     words << word if !added_word?(word)
   end

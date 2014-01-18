@@ -13,8 +13,6 @@
 class Word < ActiveRecord::Base
   include AASM
 
-  has_many :user_words, :dependent => :destroy
-  has_many :users, :through => :user_words
   has_many :explanations, :dependent => :destroy
 
   scope :recent, -> {order("id desc")}
