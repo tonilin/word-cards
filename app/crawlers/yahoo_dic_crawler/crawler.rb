@@ -12,6 +12,8 @@ class YahooDicCrawler::Crawler
     page = @mechanize.get("#{base_url}#{@word_for_search}")
 
     @result_doc = page.search(".result_cluster_first")
+
+    self
   end
 
   def success?
@@ -28,6 +30,26 @@ class YahooDicCrawler::Crawler
 
   def explanation
     @result_doc.search(".explanation").first.text
+  end
+
+  def explanations
+    result = []
+
+    explanation_pos_wrappers = @result_doc.search(".explanation_pos_wrapper")
+
+    explanation_pos_wrappers.each do |explanation_pos_wrapper|
+      pos = explanation_pos_wrapper.search(".pos_abbr").first.text
+
+      explanation_pos_wrapper.search(".explanation").each do |explanation_row|
+        result << {
+          pos: pos,
+          content: explanation_row.text
+        }
+      end
+
+    end
+
+    result
   end
 
   def pos
