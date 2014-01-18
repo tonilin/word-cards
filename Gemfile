@@ -51,6 +51,8 @@ gem "mechanize"
 
 gem "hipchat"
 
+gem "button_link_to"
+
 # Cache
 gem "dalli"
 
