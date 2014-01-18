@@ -4,11 +4,11 @@ class CardsController < ApplicationController
   def index
     @word = Word.new
 
-    @cards = current_user.cards.recent.all
+    @cards = current_user.cards.recent_update.all
   end
 
   def create
-    @cards = current_user.cards.recent.all
+    @cards = current_user.cards.recent_update.all
 
     @word = Word.find_or_initialize_by_word(word_params[:word])
 
