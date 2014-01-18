@@ -58,6 +58,8 @@ gem "compass-rails", "~> 1.1.2"
 
 gem "unicorn"
 
+gem "aasm", "3.0.16"
+
 group :development do
   gem "capistrano"
   gem "capistrano-ext"
