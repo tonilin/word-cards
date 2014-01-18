@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :cards
+
 
   def add_word!(word)
     words << word if !added_word?(word)

@@ -14,6 +14,8 @@ class Word < ActiveRecord::Base
   include AASM
 
   has_many :explanations, :dependent => :destroy
+  has_many :cards
+
 
   scope :recent, -> {order("id desc")}
 
