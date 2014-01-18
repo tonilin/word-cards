@@ -21,6 +21,7 @@ class Word < ActiveRecord::Base
 
   validates :content, :presence => true, :uniqueness => true
 
+  after_create :crawl_yahoo_dic
 
   aasm :column => :status do
     state :pending, :initial => true
@@ -36,6 +37,10 @@ class Word < ActiveRecord::Base
 
   end
 
+
+  def crawl_yahoo_dic
+    YahooDicCrawler.new(self).run
+  end
 
 
 end
