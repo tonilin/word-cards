@@ -15,12 +15,10 @@ class YahooDicCrawler
       })
     end
 
-
-
   end
 
   def currecting_word
-    currect_word = Word.find_or_initialize_by_word(@crawler.word)
+    currect_word = Word.find_or_initialize_by_content(@crawler.word)
 
     if !currect_word.persisted?
       save_result_to_db(currect_word)
