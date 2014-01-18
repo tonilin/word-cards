@@ -2,12 +2,12 @@
 #
 # Table name: words
 #
-#  id          :integer          not null, primary key
-#  word        :string(255)
-#  explanation :string(255)
-#  status      :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id              :integer          not null, primary key
+#  content         :string(255)
+#  status          :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  currect_word_id :integer
 #
 
 class Word < ActiveRecord::Base
@@ -15,13 +15,11 @@ class Word < ActiveRecord::Base
 
   has_many :explanations, :dependent => :destroy
   has_many :cards, :dependent => :destroy
-
+  belongs_to :currect_word, :foreign_key => :currect_word_id, :class_name => "Word"
 
   scope :recent, -> {order("id desc")}
 
   validates :content, :presence => true, :uniqueness => true
-
-  after_create :crawl_yahoo_dic
 
   aasm :column => :status do
     state :pending, :initial => true
@@ -37,10 +35,6 @@ class Word < ActiveRecord::Base
 
   end
 
-
-  def crawl_yahoo_dic
-    YahooDicCrawler.new(self).run if self.pending?
-  end
 
 
 end

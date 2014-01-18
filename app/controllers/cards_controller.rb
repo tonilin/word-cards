@@ -10,15 +10,10 @@ class CardsController < ApplicationController
   def create
     @cards = current_user.cards.recent_update.all
 
-    @word = Word.find_or_create_by_content(word_params[:content])
+    @word = YahooDicCrawler.new(word_params[:content]).run
 
-    if !@word.persisted?
-      return render :index
-    end
 
-    if @word.success?
-      current_user.add_card!(@word, @word.explanations.first)
-    end
+    current_user.add_card!(@word, @word.explanations.first)
 
     redirect_to cards_path
   end

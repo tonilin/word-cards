@@ -2,12 +2,12 @@
 #
 # Table name: words
 #
-#  id          :integer          not null, primary key
-#  word        :string(255)
-#  explanation :string(255)
-#  status      :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id              :integer          not null, primary key
+#  content         :string(255)
+#  status          :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  currect_word_id :integer
 #
 
 require 'spec_helper'

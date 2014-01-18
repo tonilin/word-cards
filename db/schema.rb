@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118115851) do
+ActiveRecord::Schema.define(version: 20140118144018) do
 
   create_table "cards", force: true do |t|
     t.integer  "user_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20140118115851) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "currect_word_id"
   end
 
   add_index "words", ["content"], name: "index_words_on_content", unique: true, using: :btree
