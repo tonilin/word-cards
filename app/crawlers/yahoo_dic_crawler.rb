@@ -40,8 +40,8 @@ class YahooDicCrawler
     if @crawler.exactly_hit?
       save_result_to_db(@word)
 
-      @word.cards.each do |card|
-        card.explanation = @word.explanations.first if card.explanation.nil?
+      @word.cards.without_explanation.each do |card|
+        card.explanation = @word.explanations.first
         card.save
       end
 
