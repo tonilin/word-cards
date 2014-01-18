@@ -39,7 +39,7 @@ class Word < ActiveRecord::Base
 
 
   def crawl_yahoo_dic
-    YahooDicCrawler.new(self).run
+    YahooDicCrawler.new(self).run if self.pending?
   end
 
 

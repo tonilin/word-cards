@@ -16,7 +16,10 @@ class CardsController < ApplicationController
       return render :index
     end
 
-    current_user.add_card!(@word, @word.explanations.first)
+    if @word.success?
+      current_user.add_card!(@word, @word.explanations.first)
+    end
+
     redirect_to cards_path
   end
 

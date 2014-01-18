@@ -18,16 +18,6 @@ class YahooDicCrawler
 
   end
 
-  def currecting_word
-    currect_word = Word.find_or_create_by_content(@crawler.word)
-
-    if currect_word.pending?
-      save_result_to_db(currect_word)
-    end
-
-    return currect_word
-  end
-
   def run
     @crawler.run
 
@@ -47,14 +37,9 @@ class YahooDicCrawler
       return
     end
 
-    currect_word = currecting_word
+    currect_word = Word.find_or_create_by_content(@crawler.word)
 
-    @word.cards.each do |card|
-      card.user.add_card!(currect_word, currect_word.explanations.first)
-    end
-
-    @word.destroy
-
+    @word.fail!
   end
 
 
