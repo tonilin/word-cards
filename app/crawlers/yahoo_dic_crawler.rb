@@ -7,6 +7,7 @@ class YahooDicCrawler
 
   def save_result_to_db(record)
     @word.explanation = @crawler.explanation
+    @word.pos = @crawler.pos
     @word.status = "success"
     @word.save
   end

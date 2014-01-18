@@ -30,4 +30,8 @@ class YahooDicCrawler::Crawler
     @result_doc.search(".explanation").first.text
   end
 
+  def pos
+    @result_doc.search(".explanation_group_hd .pos_abbr").first.text
+  end
+
 end
