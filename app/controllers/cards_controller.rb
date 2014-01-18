@@ -7,7 +7,7 @@ class CardsController < ApplicationController
 
     current_user.add_card!(@word, @word.explanations.first)
 
-    redirect_to cards_path
+    redirect_to :back
   end
 
 
