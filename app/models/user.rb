@@ -28,7 +28,11 @@ class User < ActiveRecord::Base
   has_many :words, :through => :user_words
 
   def add_word!(word)
-    words << word
+    words << word if !added_word?(word)
+  end
+
+  def added_word?(word)
+    words.find_by_word(word.word).present?
   end
 
 
