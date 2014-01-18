@@ -10,6 +10,16 @@ class YahooDicCrawler
     @word.pos = @crawler.pos
     @word.status = "success"
     @word.save
+
+    @crawler.explanations.each do |explanation|
+      @word.explanations.create({
+        pos: explanation[:pos],
+        content: explanation[:content]
+      })
+    end
+
+
+
   end
 
   def currenting_word
