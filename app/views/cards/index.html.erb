@@ -1,5 +1,5 @@
 
-<%= simple_form_for @word do |f| %>
+<%= simple_form_for @word, :url => cards_path do |f| %>
   <%= f.input :word %>
   <%= f.submit %>
 <% end %>
