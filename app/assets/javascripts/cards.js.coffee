@@ -34,10 +34,10 @@ class CardFlow
     cardBox = @currentCard() if !cardBox
     $(cardBox).addClass("flip")
 
-  hideCard:  (cardBox)->
+  disableCard:  (cardBox)->
     $(cardBox).removeClass("active")
 
-  showCard:  (cardBox)->
+  activeCard:  (cardBox)->
     $(cardBox).addClass("active")
 
   currentCard: ->
@@ -59,26 +59,31 @@ class CardFlow
     else
       return @container.find(".card-box").last()
 
+  moveCurrentCardToView: ->
+    @container.find(".cards-wrapper").css("margin-top", -(@currentCard().prevAll().length * 220) + 220)
 
   switchToNextCard: ->
     currentCard = @currentCard()
     nextCard = @nextCard()
 
     @flipCardToFront(currentCard)
-    @hideCard(currentCard)
+    @disableCard(currentCard)
 
-    @showCard(nextCard)
+    @activeCard(nextCard)
+
+    @moveCurrentCardToView()
 
   switchToPreviousCard: ->
     currentCard = @currentCard()
     previousCard = @previousCard()
 
     @flipCardToFront(currentCard)
-    @hideCard(currentCard)
+    @disableCard(currentCard)
 
-    @showCard(previousCard)
+    @activeCard(previousCard)
 
+    @moveCurrentCardToView()
 
 $ ->
-  new CardFlow($(".card-container")) if $(".card-container").length > 0
+  new CardFlow($(".cards-container")) if $(".cards-container").length > 0
 

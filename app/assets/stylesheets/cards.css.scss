@@ -3,24 +3,34 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3/transition";
 @import "compass/css3/border-radius";
+@import "compass/css3/opacity";
 
 $card-box-width: 500px;
 $card-box-height: 200px;
 $card-box-front-backgroud-color: #fff;
 $card-box-back-backgroud-color: #ccc;
+$card-box-margin-bottom: 20px;
 
-.card-container {
-  margin-top: 200px;
+.cards-container {
+  height: ($card-box-height + $card-box-margin-bottom) * 3;
+  max-height: ($card-box-height + $card-box-margin-bottom) * 3;
+  overflow: hidden;
 
   .card-box {
-    display: none;
+    @include opacity(0.3);
+    //display: none;
 
     &.active {
+      @include opacity(1);
       display: block;
     }
 
   }
 
+  .cards-wrapper {
+    margin-top: 220px;
+    @include transition(margin 0.5s);
+  }
 }
 
 
@@ -31,7 +41,7 @@ $card-box-back-backgroud-color: #ccc;
   max-height: $card-box-height;
   overflow: hidden;
 
-  margin: 20px auto;
+  margin: 0 auto $card-box-margin-bottom;
   border: 1px solid #111;
 
   text-align: center;
