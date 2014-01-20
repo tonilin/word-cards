@@ -11,7 +11,7 @@ require 'capistrano-unicorn'
 default_environment["PATH"] = "/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin"
 
 set :application, "word-cards"
-set :repository,  "git@github.com:example/#{application}.git"
+set :repository,  "git@github.com:tonilin/#{application}.git"
 set :deploy_to, "/home/apps/#{application}"
 
 set :branch, "master"
