@@ -9,6 +9,20 @@ $card-box-height: 200px;
 $card-box-front-backgroud-color: #fff;
 $card-box-back-backgroud-color: #ccc;
 
+.card-container {
+  margin-top: 200px;
+
+  .card-box {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+  }
+
+}
+
 
 
 .card-box {
