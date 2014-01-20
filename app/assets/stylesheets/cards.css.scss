@@ -54,7 +54,7 @@ $card-box-back-backgroud-color: #ccc;
     height: $card-box-height;
     vertical-align: middle;
     background-color: $card-box-front-backgroud-color;
-    @include transition(margin 0.3s);
+    @include transition(margin 0.1s);
     display: table;
   }
 
