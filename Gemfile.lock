@@ -217,6 +217,10 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
     rake (10.1.1)
+    randumb (0.4.1)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      rake
     rdoc (4.1.1)
       json (~> 1.4)
     redis (3.0.6)
@@ -345,6 +349,7 @@ DEPENDENCIES
   pry-nav
   pry-remote
   rails (= 4.0.0)
+  randumb
   redis-rails
   rmagick
   rspec-rails

@@ -70,7 +70,8 @@ gem "unicorn"
 
 gem "aasm", "3.0.16"
 
-gem 'airbrake'
+
+gem 'randumb'
 
 group :development do
   gem "capistrano"
