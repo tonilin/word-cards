@@ -19,3 +19,5 @@ test:
 
 production:
   <<: *defaults
+  domain: "http://word-cards.roachking.net"   
+
