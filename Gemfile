@@ -70,6 +70,8 @@ gem "unicorn"
 
 gem "aasm", "3.0.16"
 
+gem 'airbrake'
+
 group :development do
   gem "capistrano"
   gem "capistrano-ext"

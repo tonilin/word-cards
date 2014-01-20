@@ -78,3 +78,6 @@ end
 after "deploy:finalize_update", "my_tasks:symlink"
 
 after 'deploy:restart', 'unicorn:restart'  # app preloaded
+
+
+require 'airbrake/capistrano'
