@@ -1,7 +1,7 @@
 class CardsController < AuthenticatedController
 
   def index
-    @cards = current_user.cards.recent_update.all
+    @cards = current_user.cards.random(25)
 
   end
 
