@@ -1,4 +1,4 @@
-class ListsController < ApplicationController
+class ListsController < AuthenticatedController
 
   def index
     @word = Word.new

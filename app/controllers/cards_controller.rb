@@ -1,4 +1,4 @@
-class CardsController < ApplicationController
+class CardsController < AuthenticatedController
 
   def index
     @cards = current_user.cards.recent_update.all
