@@ -52,6 +52,7 @@ gem "rvm-capistrano"
 gem "omniauth"
 gem "omniauth-facebook"
 
+gem "figaro"
 
 gem "mechanize"
 
